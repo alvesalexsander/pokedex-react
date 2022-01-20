@@ -1,0 +1,13 @@
+.pokedex_frame {
+  background-color: #C42523;
+  background: linear-gradient(to top right, #8c1f1e, #8c1f1e 30%, #d32724);
+  width: 140rem;
+  height: 80rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #000;
+  border-radius: 4px;
+  display: flex;
+}
