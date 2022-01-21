@@ -2,6 +2,10 @@ html, body {
   font-size: 62.5%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
   width: 100vw;

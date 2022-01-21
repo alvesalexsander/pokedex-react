@@ -1,0 +1,32 @@
+.numpad {
+  font-size: 2rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 1rem;
+  border-radius: 3px;
+  height: 35rem;
+  width: 40rem;
+  position: relative;
+}
+
+.key {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to top right, #8c1f1e 20%, #d32724);
+  border-radius: 5px;
+  border: 1px solid #000000;
+  box-shadow: -0.5rem 0.5rem 1rem #000000;
+  transition: 0.1s ease;
+  text-align: center;
+  font-size: 2rem;
+
+  &:active {
+    box-shadow: 0 0rem 1.4rem black;
+    border: 0.3rem solid #000000;
+    filter: brightness(90%);
+  }
+
+  &-centered {
+    grid-column: 2;
+  }
+}
