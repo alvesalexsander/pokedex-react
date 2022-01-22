@@ -1,0 +1,25 @@
+.goButton {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: 0.1rem solid #000000;
+  font-size: 1.8rem;
+  background-image: radial-gradient(circle, white, rgba(36, 36, 36, 0.2));
+  cursor: pointer;
+  box-shadow: 0 0.5rem 0.9rem black;
+  transform: scale(1.05);
+  transition: 0.1s ease;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+  &:active {
+    box-shadow: 0 0rem 1.4rem black;
+    transform: scale(1.03);
+    border: 0.2rem solid #000000;
+  }
+  &:focus {
+    outline: 0;
+  }
+}

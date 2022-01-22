@@ -1,4 +1,5 @@
 import './App.scss';
+
 import {PokedexFrame} from './views/pokedex-frame/pokedex-frame.js';
 
 function App() {

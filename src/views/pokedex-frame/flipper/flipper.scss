@@ -1,0 +1,43 @@
+.flipper {
+  background: linear-gradient(to right, #8c1f1e 20%, rgba(211, 39, 36, 0.9), #d32724);
+  box-shadow: -0.2rem 0.1rem 1rem #000000;
+  height: 50%;
+  width: 9%;
+  background-color: #ffffff;
+  position: relative;
+  border: 2px solid #000000;
+  border-radius: 3px;
+  z-index: -11;
+  filter: brightness(85%);
+  align-self: center;
+
+  &::after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(to right, #8c1f1e 20%, rgba(211, 39, 36, 0.9), #d32724);
+    box-shadow: -0.2rem 0.1rem 1rem #000000;
+    height: calc(50% + 1rem);
+    width: 110%;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 3px;
+    transform: translate(-50%, -50%);
+    top: 126%;
+    left: 50%;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(to right, #8c1f1e 20%, rgba(211, 39, 36, 0.9), #d32724);
+    box-shadow: -0.2rem 0.1rem 1rem #000000;
+    height: calc(50% + 1rem);
+    width: 110%;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 3px;
+    transform: translate(-50%, -50%);
+    top: -26%;
+    left: 50%;
+  }
+}

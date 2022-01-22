@@ -14,15 +14,15 @@
   width: 100%;
   background: linear-gradient(to top right, #8c1f1e 20%, #d32724);
   border-radius: 5px;
-  border: 1px solid #000000;
+  border: 0.1rem solid #000000;
   box-shadow: -0.5rem 0.5rem 1rem #000000;
   transition: 0.1s ease;
   text-align: center;
   font-size: 2rem;
 
   &:active {
-    box-shadow: 0 0rem 1.4rem black;
-    border: 0.3rem solid #000000;
+    box-shadow: 0 0rem .5rem black;
+    border: 0.1rem solid #000000;
     filter: brightness(90%);
   }
 

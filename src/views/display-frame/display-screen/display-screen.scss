@@ -9,4 +9,147 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
+  &__name {
+    width: 60%;
+    height: 5rem;
+    text-transform: capitalize;
+    display: none;
+  }
+
+  &__type {
+    height: 4rem;
+    width: 100%;
+    position: absolute;
+    top: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > * {
+      height: 100%;
+      width: 12.5rem;
+      background-color: white;
+      border-radius: 100px;
+      border: 0.1rem solid #000000;
+      position: relative;
+      z-index: 200;
+      font-size: 2.4rem;
+      line-height: 3.8rem;
+      text-transform: uppercase;
+      visibility: hidden;
+    }
+
+    & > *::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 92%;
+      width: 11.9rem;
+      border-radius: 100px;
+      border: 0.1rem solid #000000;
+      z-index: -1;
+    }
+
+    &-0 {
+      left: 2rem;
+    }
+    &-1 {
+      right: 2rem;
+    }
+
+    &__image {
+      width: 28rem;
+      height: 28rem;
+      background-size: cover;
+      font-size: 4rem;
+      line-height: 5rem;
+    }
+  }
+}
+
+#types {
+  display: none;
+}
+
+.normal:before {
+  background-color: #a8a878;
+}
+
+.fire:before {
+  background-color: #f08030;
+}
+
+.fighting:before {
+  background-color: #c03028;
+}
+
+.water:before {
+  background-color: #6890f0;
+}
+
+.flying:before {
+  background-color: #a890f0;
+}
+
+.grass:before {
+  background-color: #78c850;
+}
+
+.poison:before {
+  background-color: #a040a0;
+}
+
+.electric:before {
+  background-color: #f8d030;
+}
+
+.ground:before {
+  background-color: #e0c068;
+}
+
+.psychic:before {
+  background-color: #f85888;
+}
+
+.rock:before {
+  background-color: #b8a038;
+}
+
+.ice:before {
+  background-color: #98d8d8;
+}
+
+.bug:before {
+  background-color: #a8b820;
+}
+
+.dragon:before {
+  background-color: #7038f8;
+}
+
+.ghost:before {
+  background-color: #705898;
+}
+
+.dark:before {
+  background-color: #705848;
+}
+
+.steel:before {
+  background-color: #b8b8d0;
+}
+
+.fairy:before {
+  background-color: #ee99ac;
+}
+
+.displayText {
+  font-family: "VT323", monospace;
+  font-size: 5rem;
+  letter-spacing: 5px;
+  color: #ffffff;
+  text-align: center;
 }

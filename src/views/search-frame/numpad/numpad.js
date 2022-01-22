@@ -1,18 +1,40 @@
 import './numpad.scss';
 
+import { useDispatch } from 'react-redux';
+import { setClickedKey } from '../../../models/slices/numpad.slice';
+
 export function NumPad(props) {
+  const dispatch = useDispatch();
+
+  const numKeys = [];
+
+  ['1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach((value) => {
+    numKeys.push(
+      <button
+        key={value}
+        className="key"
+        onClick={() => dispatchReducers(value ?? '')}
+        data-value={value}>
+        {value}
+      </button>)
+  })
   return (
     <div className='numpad'>
-      <button class="key">1</button>
-      <button class="key">2</button>
-      <button class="key">3</button>
-      <button class="key">4</button>
-      <button class="key">5</button>
-      <button class="key">6</button>
-      <button class="key">7</button>
-      <button class="key">8</button>
-      <button class="key">9</button>
-      <button class="key key-centered">0</button>
+      {numKeys}
+      <button 
+      className="key key-centered"
+      onClick={() => dispatchReducers('0' ?? '')}
+      data-value='0'
+      >0</button>
     </div>
   )
+
+  function dispatchReducers(value) {
+    dispatch(setClickedKey(value ?? ''));
+    for (const reducer of props.reducers) {
+      console.log(value);
+      dispatch(reducer(value ?? ''));
+    }
+  }
 }
+

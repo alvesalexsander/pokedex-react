@@ -1,9 +1,9 @@
 .display {
-  clip-path: polygon(0% 0%, 95% 0%, 100% 7%, 100% 100%, 0% 100%);
+  // clip-path: polygon(0% 0%, 95% 0%, 100% 7%, 100% 100%, 0% 100%);
   background-color: white;
   width: 45rem;
   height: 40rem;
-  border-radius: 3px;
+  border-radius: 3px 40px 3px 3px;
   position: relative;
   display: flex;
   justify-content: center;
