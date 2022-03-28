@@ -1,79 +1,81 @@
 import './display-screen.scss';
+import { PokemonDisplayImage } from '../../../models/images/pokemon-display.image';
 
 import { useSelector } from 'react-redux';
 
 export function DisplayScreen(props) {
-  const pokemonData = useSelector(state => {
-    if (state.pokemon.error) {
-      handlePokemonDataError(state.pokemon);
-      return;
-    }
-    if (state.pokemon.caught) {
-      updateDisplay(state.pokemon);
-    }
-  });
-
+  const pokemonData = useSelector(state => state.pokemon);
+  const imageContainer = document.getElementById('pokemonImage');
+  const loading = document.getElementById('pokeballLoading');
+  
   return (
-    <div className="display_screen">
-      <div id="pokemonName" className="display_screen__name displayText"></div>
-      <div id="types" className="display_screen__type">
-        <div id="type0" className="display_screen__type-0 displayText"></div>
-        <div id="type1" className="display_screen__type-1 displayText"></div>
+    <div className='display_screen'>
+      <div id='pokemonName' className='display_screen__name displayText' style={{
+        display: `${pokemonData?.caught?.name ? 'block' : 'none'}`
+      }}>
+        {pokemonData?.caught?.name}
       </div>
-      <div id="pokemonImage" className="display_screen__image displayText">Pesquise pelo nome ou #número do Pokémon!</div>
+
+      <div id='types' className='display_screen__type'>
+        <div id='type0'
+          className={`display_screen__type-0 displayText ${pokemonData?.caught?.types?.[0]?.type?.name?.toLowerCase?.() ?? ''}`}
+          style={{ visibility: `${pokemonData?.caught?.types?.[0]?.type?.name ? 'visible' : 'hidden'}` }}>
+          {pokemonData?.caught?.types?.[0]?.type?.name}
+        </div>
+
+        <div id='type1'
+          className={`display_screen__type-1 displayText ${pokemonData?.caught?.types?.[1]?.type?.name?.toLowerCase?.() ?? ''}`}
+          style={{ visibility: `${pokemonData?.caught?.types?.[1]?.type?.name ? 'visible' : 'hidden'}` }}>
+          {pokemonData?.caught?.types?.[1]?.type?.name}
+        </div>
+      </div>
+
+      <div id='pokemonImage' className='display_screen__image'
+        style={{ backgroundImage: setDisplayImage(pokemonData) }}>
+        <div className='displayText'>{getDisplayMessage(pokemonData)}</div>
+      </div>
+      <div id='pokeballLoading'></div>
     </div>
   )
 
-  function updateDisplay(pokemonData) {
-    hideTypes(pokemonData);
-    setTypes(pokemonData);
+  async function setDisplayImage(pokemonData) {
+    if (pokemonData.error || !isElementReady('pokemonImage')) {
+      return '';
+    }
+
+    const pokemonImage = new PokemonDisplayImage(imageContainer, loading);
+    pokemonImage.src = pokemonData?.caught?.sprites?.front_default;
   }
 
-  function handlePokemonDataError(errorData) {
-    hideTypes(errorData);
-    resetImage();
-    switch (errorData.errorDetail) {
+  function getDisplayMessage(pokemonData) {
+    if (!pokemonData.error && !pokemonData?.caught) {
+      clearDisplayImage();
+      return 'Pesquise pelo nome ou #número do Pokémon!';
+    }
+    switch (pokemonData?.errorDetail) {
       case 'missing':
-        document.getElementById('pokemonImage').innerHTML = 'Pokémon não encontrado';
-        break;
+        clearDisplayImage();
+        return 'Pokémon não encontrado';
       case 'unavailable':
-        document.getElementById('pokemonImage').innerHTML = 'Erro ao capturar o Pokémon (Serviço indisponível)';
-        break;
+        clearDisplayImage();
+        return 'Erro ao capturar o Pokémon (Serviço indisponível)';
       default:
-        document.getElementById('pokemonImage').innerHTML = 'Pesquise pelo nome ou #número do Pokémon!';
+        return '';
     }
   }
 
-  function hideTypes(pokemonData) {
-    if (!document.getElementById('types') || !document.getElementById('pokemonName')) {
+  function clearDisplayImage() {
+    if (!isElementReady('pokemonImage')) {
+      console.log('not ready')
       return;
     }
-
-    if (!pokemonData?.caught?.types?.length) {
-      document.getElementById('types').style.display = 'none';
-      document.getElementById('pokemonName').style.display = 'none';
-      console.log('sim')
-      return;
-    }
-    document.getElementById('types').style.display = 'block';
-    document.getElementById('pokemonName').style.display = 'block';
-    console.log('nao');
+    Object.assign(document?.getElementById?.('pokemonImage').style, {
+      'background-image': ''
+    });
   }
 
-  function resetImage() {
-    document.getElementById('pokemonImage').style.backgroundImage = '';
-  }
-
-  function setTypes(pokemonData) {
-    if (!pokemonData?.caught?.types?.length || !document.getElementById('types')) {
-      return;
-    }
-
-    document.getElementById('type0').innerHTML = pokemonData?.caught?.types?.[0]?.type?.name;
-    if (pokemonData?.caught?.types?.[1]?.type?.name) {
-      document.getElementById('type1').innerHTML = pokemonData?.caught?.types?.[1]?.type?.name;
-    }
-
+  function isElementReady(elementId) {
+    return document?.getElementById?.(elementId) ? true : false;
   }
 
 }

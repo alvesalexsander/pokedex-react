@@ -19,7 +19,8 @@
     height: calc(50% + 1rem);
     width: 110%;
     background-color: #ffffff;
-    border: 2px solid #000000;
+    border-left: 2px solid #000000;
+    
     border-radius: 3px;
     transform: translate(-50%, -50%);
     top: 126%;
@@ -34,7 +35,9 @@
     height: calc(50% + 1rem);
     width: 110%;
     background-color: #ffffff;
-    border: 2px solid #000000;
+    border-right: 2px solid #000000;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
     border-radius: 3px;
     transform: translate(-50%, -50%);
     top: -26%;

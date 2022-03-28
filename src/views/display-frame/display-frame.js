@@ -1,5 +1,6 @@
 import './display-frame.scss';
 import { DisplayScreen } from './display-screen/display-screen';
+import { ActionButtons } from './action-buttons/action-buttons';
 
 export function DisplayFrame(props) {
   return (
@@ -7,6 +8,7 @@ export function DisplayFrame(props) {
       <div className="display">
         <DisplayScreen></DisplayScreen>
       </div>
+      <ActionButtons></ActionButtons>
     </div>
   )
 }

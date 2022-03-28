@@ -7,7 +7,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   &__name {
@@ -34,7 +34,7 @@
       border: 0.1rem solid #000000;
       position: relative;
       z-index: 200;
-      font-size: 2.4rem;
+      font-size: 2.4rem !important;
       line-height: 3.8rem;
       text-transform: uppercase;
       visibility: hidden;
@@ -59,19 +59,96 @@
     &-1 {
       right: 2rem;
     }
+  }
 
-    &__image {
-      width: 28rem;
-      height: 28rem;
-      background-size: cover;
-      font-size: 4rem;
-      line-height: 5rem;
-    }
+  &__image {
+    width: 28rem;
+    height: 28rem;
+    background-size: cover;
+    font-size: 4rem;
+    line-height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 9;
   }
 }
 
-#types {
-  display: none;
+#pokeballLoading {
+  background-color: #242424;
+  position: absolute;
+  top: calc(50% + 2rem);
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1) !important;
+  width: 16rem;
+  height: 16rem;
+  border: .5rem solid #fff;
+  border-radius: 50%;
+  animation: pokeballLoading 5s linear infinite;
+  transition: .2s all;
+  visibility: hidden;
+  z-index: 8;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: .5rem solid #fff;
+    width: .01rem;
+    height: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    border: .5rem solid #fff;
+    border-radius: 50%;
+    width: 15%;
+    height: 15%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes pokeballLoading {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes pkmnIn {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pkmnChange {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0);
+  }
+  // 75% {
+  //   transform: scale(1.2);
+  // }
+  // 100% {
+  //   transform: scale(1);
+  // }
 }
 
 .normal:before {

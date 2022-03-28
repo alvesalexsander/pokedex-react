@@ -1,0 +1,80 @@
+@mixin center-content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.action_buttons {
+  // background-color: #fff;
+  position: relative;
+  width: 30rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > * {
+    position: relative;
+    z-index: 20;
+    height: 6rem;
+    width: 6rem;
+    background: linear-gradient(to top right, rgba(#8c1f1e, 1) 20%, rgba(#d32724, 1));
+    border: 1px solid black;
+    border-radius: 150px;
+    box-shadow: -0.3rem 0.4rem 0.8rem black;
+    transition: 0.1s ease;
+
+    & .shape {
+      @include center-content;
+      z-index: 90;
+      width: 4rem;
+      height: 4rem;
+      background-color: #000;
+      -webkit-clip-path: polygon(
+        17% 43%,
+        86% 14%,
+        88% 18%,
+        89% 19%,
+        89% 84%,
+        85% 87%,
+        22% 61%,
+        17% 59%,
+        13% 56%,
+        10% 50%,
+        13% 45%
+      );
+      clip-path: polygon(
+        17% 43%,
+        86% 14%,
+        88% 18%,
+        89% 19%,
+        89% 84%,
+        85% 87%,
+        22% 61%,
+        17% 59%,
+        13% 56%,
+        10% 50%,
+        13% 45%
+      );
+    }
+  }
+
+  & > *:active {
+    outline: 0;
+    box-shadow: 0 0rem 1.4rem rgba(#000, 1);
+    transform: scale(0.95);
+    border: 0.3rem solid #000;
+    filter: brightness(90%);
+  }
+
+  & > *:focus {
+    outline: 0;
+  }
+
+  .arrow__right {
+    & .shape {
+      @include center-content;
+      transform: rotate(180deg) translate(50%, 50%);
+    }
+  }
+}
