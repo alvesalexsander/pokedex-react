@@ -2,7 +2,7 @@ import axios from "axios";
 
 export class PokemonService {
 
-  #baseURL = 'https://pokeapi.co/api/v2/pokemon';
+  #baseURL = process.env.REACT_APP_POKEMON_API_URL;
 
   throwPokeball(identifier) {
     if (Number.isInteger(+identifier)) {
