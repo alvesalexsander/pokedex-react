@@ -32,7 +32,6 @@ export function NumPad(props) {
   function dispatchReducers(value) {
     dispatch(setClickedKey(value ?? ''));
     for (const reducer of props.reducers) {
-      console.log(value);
       dispatch(reducer(value ?? ''));
     }
   }

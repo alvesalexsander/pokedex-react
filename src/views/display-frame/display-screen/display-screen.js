@@ -66,7 +66,6 @@ export function DisplayScreen(props) {
 
   function clearDisplayImage() {
     if (!isElementReady('pokemonImage')) {
-      console.log('not ready')
       return;
     }
     Object.assign(document?.getElementById?.('pokemonImage').style, {

@@ -26,7 +26,6 @@ export function PokedexFrame(props) {
 
     try {
       const pokemonResponse = await pokemonService.throwPokeball(identifier.toLowerCase());
-      console.log(pokemonResponse?.data);
       dispatch(caughtPokemon(pokemonResponse?.data));
     } catch (error) {
       switch (error.toJSON().status) {

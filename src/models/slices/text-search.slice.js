@@ -10,7 +10,6 @@ const textSearchSlice = createSlice({
       state.text = action.payload;
     },
     appendTextSearch: (state, action) => {
-      console.log(action.payload)
       state.text = state.text + action.payload;
     }
   }

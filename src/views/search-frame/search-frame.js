@@ -8,7 +8,7 @@ import { appendTextSearch } from '../../models/slices/text-search.slice';
 export function SearchFrame(props) {
   return (
     <div className="search-frame">
-      <TextSearch></TextSearch>
+      <TextSearch catchPokemon={props.catchPokemon}></TextSearch>
       <GoButton catchPokemon={props.catchPokemon}></GoButton>
       <NumPad reducers={[appendTextSearch]}></NumPad>
     </div>

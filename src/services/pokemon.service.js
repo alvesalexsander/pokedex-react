@@ -8,7 +8,7 @@ export class PokemonService {
     if (Number.isInteger(+identifier)) {
       identifier = +identifier + '';
     }
-    return axios.get(`${this.#baseURL + '/' + identifier}`, {
+    return axios.get(`${this.#baseURL}/pokemon/${identifier}`, {
       timeout: 5000
     });
   }

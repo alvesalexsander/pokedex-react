@@ -9,7 +9,7 @@ export function TextSearch(props) {
 
   return (
     <div className='textSearch'>
-      <form id="search" className="textSearch__form" autoComplete="off">
+      <form id="search" className="textSearch__form" autoComplete="off" onSubmit={clearInput}>
         <div className='clearButton' hidden={!text.length} onClick={clearInput}></div>
         <div className="textSearch__form__autocomplete"></div>
         <input id="textSearch__form__field"
@@ -24,7 +24,9 @@ export function TextSearch(props) {
     </div>
   )
 
-  function clearInput() {
+  function clearInput(event) {
+    props.catchPokemon(text);
     dispatch(setTextSearch(''));
+    event.preventDefault();
   }
 }
